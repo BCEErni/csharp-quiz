@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using Shouldly;
 
 namespace CalculatorApp.UnitTests;
 
@@ -18,36 +19,45 @@ private Calculator _calculator;
         Assert.Pass();
     }
 
-    [Test]
-    public void AddSum()
+    [TestCase(1,2,3)]
+    public void AddSum(double num1, double num2, double expectedresult)
     {
-        var result = _calculator.AddSum(1, 2);
+        var calculator = new Calculator();
 
-        Assert.That(result, Is.EqualTo(3));
+        var sum = calculator.AddSum(num1,num2);
+
+        expectedresult.ShouldBe(sum);
+  
     }
 
      
-    [Test]
-    public void Subtract()
+    [TestCase(3,1,2)]
+    public void Subtract(double num1, double num2, double expectedresult)
     {
-        var result = _calculator.Subtract(2, 1);
+        var calculator = new Calculator();
 
-        Assert.That(result, Is.EqualTo(1));
+        var sub = calculator.Subtract(num1,num2);
+
+        expectedresult.ShouldBe(sub);
     }
      
-    [Test]
-    public void Product()
+    [TestCase(4,3,12)]
+    public void Product(double num1, double num2, double expectedresult)
     {
-        var result = _calculator.Product(2, 2);
+       var calculator = new Calculator();
 
-        Assert.That(result, Is.EqualTo(4));
+       var prod = calculator.Product(num1,num2);
+
+       expectedresult.ShouldBe(prod);
     }
      
-    [Test]
-    public void Quotient()
+    [TestCase(3,3,1)]
+    public void Quotient(double num1, double num2, double expectedresult)
     {
-        var result = _calculator.Quotient(2, 2);
+        var calculator = new Calculator();
 
-        Assert.That(result, Is.EqualTo(1));
+        var quot = calculator.Quotient(num1,num2);
+
+        expectedresult.ShouldBe(quot);
     }
 }

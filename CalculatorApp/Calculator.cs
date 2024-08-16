@@ -1,9 +1,11 @@
 using System.Security.Cryptography.X509Certificates;
-
+using Microsoft.Extensions.Logging;
 namespace CalculatorApp;
 
 public class Calculator
 {
+
+     private readonly ILogger<Calculator> _logger;
     public double PerformOperation(double num1, double num2, string operation)
     {
         double result = 0;
